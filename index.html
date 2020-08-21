@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+</head>
+<body>
+    <img src="http://lys.buctsnc.cn/imgs/c34adaea07ad4757b98e7e1c5ce9c2e3.jpg" alt="aaa">
+    <button id='btn'>click me</button>
+</body>
+<script>
+    document.querySelector('#btn').addEventListener('click', function(){
+        fetch('http://lys.buctsnc.cn/api/video?style=&type=2&area=&sort=favorites&desc=desc&page=2&pageSize=20')
+        .then(res => res.json()).then(res => document.write(JSON.stringify(res)));
+    })
+</script>
+</html>

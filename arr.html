@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function Person(name,age,gender){
+            this.name = name;
+            this.age = age;
+            this.gender = gender;
+        }
+        var per =new Person("孙悟空",28,"男");
+        var per2 =new Person("白骨精",6,"女");
+        var per3 =new Person("红孩儿",28,"男");
+        var perArr = [per,per2,per3];
+        function getAdult(arr){
+            var newArr = [];
+            for(var i=0; i<arr.length; i++){
+                if (arr[i].age > 18)
+                newArr[newArr.length] = arr[i];
+            }
+            return newArr;
+        }
+        document.write(getAdult(perArr)[1].name);
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
