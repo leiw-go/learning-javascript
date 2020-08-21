@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=  , initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #outer{
+            width: 500px;
+            margin: 50px auto;
+            padding: 10px;
+            background-color: greenyellow;
+            text-align: center;
+        }
+        #imgid{
+            width: 500px;
+            height: 417px;
+        }
+    </style>
+
+    <script>
+        window.onload = function(){
+
+            var prev =document.getElementById("prev");
+            var next =document.getElementById("next");
+            var img = document.getElementsByTagName("img")[0];
+            var info = document.getElementById("info");
+            var i = 0;
+            var imgarr = ["paper1.jpg","paper2.jpg","paper3.jpg","paper4.jpg","paper5.jpg","paper6.jpg"];
+            info.innerHTML = "共"+ imgarr.length+"张图片"+",当前第"+ (i+1) + "张";
+            prev.onclick = function(){
+                i--;
+                if(i == -1 ){
+                     i=5;
+                }
+                img.src = imgarr[i];    
+            info.innerHTML = "共"+ imgarr.length+"张图片"+",当前第"+ (i+1) + "张";
+
+            }
+            next.onclick = function(){
+                i++;
+                if(i == 6){
+                    i=0;
+                }
+                img.src = imgarr[i];
+            info.innerHTML = "共"+ imgarr.length+"张图片"+",当前第"+ (i+1) + "张";
+            }
+            var test = document.getElementById("test");
+            var opt = document.getElementsByName("opt");
+            test.onclick = function(){
+                // for(var i=0;i<opt.length; i++){
+                //     opt[i].checked = document.getElementsByName("chall").checked;
+                // }
+                // alert(opt[0].value);
+            }
+            document.getElementById("chall").onclick = function(){
+            for(var i=0;i<opt.length; i++){
+                    opt[i].checked = document.getElementById("chall").checked;
+                }
+            }
+            for(var i=0;i<opt.length; i++){
+                opt[i].onclick = function(){
+                // var flag =0;
+                for(var j=0; j<opt.length; j++){
+                    if(!opt[j].checked){
+                        document.getElementById("chall").checked = false;
+                        break;
+                    }
+                    document.getElementById("chall").checked = true;
+                    // if(opt[j].checked)
+                    // flag++;
+                    // if(flag==opt.length)
+                    // document.getElementById("chall").checked = true;
+                    // else 
+                    // document.getElementById("chall").checked = false;
+                }
+            }
+                    }
+            }
+    </script>
+</head>
+<body>
+    <div id="outer">
+        <p id="info"></p>
+        <img src="paper1.jpg" alt="pic2" id="imgid">
+        <button id="prev"><上一张</button>
+        <button id="next">下一张> </button>
+    </div>
+    <div>
+        <button id="test">这是一个全选测试按钮</button>
+    </div>
+    <div>
+        <input type="checkbox" name="opt" value="选1">选1
+        <input type="checkbox" name="opt">选2
+        <input type="checkbox" name="opt">选3
+    </div>
+    <div>
+        <input type="checkbox" id="chall">全选
+    </div>
+    
+</body>
+</html>
