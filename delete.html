@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script>
+
+        window.onload = function(){
+            function del(){
+                var del = document.getElementsByTagName("a");
+                for(var i=0; i<del.length; i++){
+                    del[i].onclick = function(){
+                        var tr = this.parentNode.parentNode;
+                        if(window.confirm("必须删除吗？"))
+                        tr.parentNode.removeChild(tr);
+                    }
+                }
+            }
+            del();
+            var sub = document.getElementById("submit");
+            var name = document.getElementById("name");
+            var salary = document.getElementById("salary");
+            var email = document.getElementById("email");
+            var table = document.getElementById("table");
+            var a = document.getElementsByTagName("a");
+            sub.onclick = function(){
+                var newTr = document.createElement("tr");
+                // var nametext = document.createTextNode(name.value);
+                // var salarytext = document.createTextNode(salary.value);
+                // var emailtext = document.createTextNode(email.value);
+                // alert(table.innerHTML);
+                // newTd.appendChild(nametext);
+                // newTd.appendChild(salarytext);
+                // newTd.appendChild(emailtext);
+                // newTd.parentNode.appendChild(newTd);
+                table.innerHTML += "<tr>" +
+                                        "<td>"+ name.value + "</td>" +
+                                        "<td align='center'>" + email.value + "</td>" +
+                                        "<td>" + salary.value + "</td>" +                                     
+                                        "<td><a href='javascript:;'>DLETE</a></td>" 
+                                    "</tr>"
+                for(var i=0; i < a.length; i++){
+                    a[i].onclick = del;
+                }
+                del();
+            }
+        }
+    </script>
+</head>
+<body>
+    <table border="1" id="table">
+        <tr>
+            <td>name</td>
+            <td align="center">email</td>
+            <td>salary</td>
+            <td>&nbsp;</td>
+        </tr>
+        <tr>
+            <td>Tom</td>
+            <td align="center">123@163.com</td>
+            <td>10000</td>
+            <td><a href="javascript:;">DLETE</a></td>
+        </tr>
+        <tr id="tr">
+            <td id="td">leiw</td>
+            <td align="center">666@163.com</td>
+            <td>10000</td>
+            <td><a href="javascript:;">DLETE</a></td>
+        </tr>
+    </table>
+
+    <table border="1">
+        <p>增加员工信息</p>
+        <tr>
+            <td>name:</td>
+            <td><input type="text" name="name" id="name"></td>
+        </tr>
+        <tr>
+            <td>salary:</td>
+            <td><input type="text" name="salary" id="salary"></td>
+        </tr>
+        <tr>
+            <td>email:</td>
+            <td><input type="text" name="email" id="email"></td>
+        </tr>
+        <tr>
+            <td colspan="2" align="center"><button id="submit">提交</button></td>
+        </tr>
+    </table>
+</body>
+</html>
